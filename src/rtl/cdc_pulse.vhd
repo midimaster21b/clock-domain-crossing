@@ -5,7 +5,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity cdc_pulse is
-  port(
+  port (
     src_clk_in    : in  std_logic;
     dest_clk_in   : in  std_logic;
 
