@@ -5,6 +5,7 @@ description: A basic clock domain crossing module for a single pulse
 filesets:
   rtl:
     files:
+      - src/constraints/timing.xdc: {file_type: xdc}
       - src/rtl/cdc_pulse.vhd
     file_type: vhdlSource
 

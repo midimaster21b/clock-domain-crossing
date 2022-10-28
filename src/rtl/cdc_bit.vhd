@@ -18,24 +18,26 @@ end cdc_bit;
 
 architecture rtl of cdc_bit is
 
-  signal src_data_r : std_logic;
-  signal dest_ff_r  : std_logic_vector(NUM_FF_G-1 downto 0) := (others => '0');
+  signal src_cdc_data_r  : std_logic;
+  signal ff_data_r       : std_logic_vector(NUM_FF_G-1 downto 0) := (others => '0');
+  signal dest_cdc_data_r : std_logic;
 
 begin
 
-  dest_data_out <= dest_ff_r(NUM_FF_G-1);
+  dest_data_out <= dest_cdc_data_r;
 
   process(src_clk_in)
   begin
     if(rising_edge(src_clk_in)) then
-      src_data_r   <= src_data_in;
+      src_cdc_data_r   <= src_data_in;
     end if;
   end process;
 
   process(dest_clk_in)
   begin
     if(rising_edge(dest_clk_in)) then
-      dest_ff_r <= dest_ff_r(dest_ff_r'left-1 downto dest_ff_r'right) & src_data_r;
+      ff_data_r       <= ff_data_r(ff_data_r'left-1 downto ff_data_r'right) & src_cdc_data_r;
+      dest_cdc_data_r <= ff_data_r(NUM_FF_G-1);
     end if;
   end process;
 end rtl;

@@ -1,0 +1,1 @@
+set_false_path -from [get_clocks -of_objects [get_cells -hier -filter {NAME =~ *u_*_cdc}]] -through [get_cells -hier -filter {NAME =~ *u_*_cdc}] -to [get_clocks -of_objects [get_cells -hier -filter {NAME =~ *u_*_cdc}]]

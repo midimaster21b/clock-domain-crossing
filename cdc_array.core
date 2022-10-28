@@ -5,6 +5,7 @@ description: A basic clock domain crossing module for an array of bits
 filesets:
   rtl:
     files:
+      - src/constraints/timing.xdc: {file_type: xdc}
       - src/rtl/cdc_array.vhd
     file_type: vhdlSource
     depend:
