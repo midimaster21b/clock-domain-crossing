@@ -10,6 +10,11 @@ filesets:
     depend:
       - midimaster21b:cdc:bit:0.1.0
 
+  tb:
+    files:
+      - src/tb/cdc_array_tb.vhd
+    file_type: vhdlSource
+
 targets:
   # Special FuseSoC target
   default: &default
@@ -17,3 +22,11 @@ targets:
     filesets:
       - rtl
     toplevel: cdc_array
+
+  sim:
+    <<: *default
+    description: Simulate the design
+    default_tool: xsim
+    filesets_append:
+      - tb
+    toplevel: cdc_array_tb
